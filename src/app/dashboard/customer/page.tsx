@@ -11,6 +11,7 @@ import type { Appointment } from "@/types";
 import PageHeader from "@/components/dashboard/PageHeader";
 import StatCard from "@/components/dashboard/StatCard";
 import StatusBadge from "@/components/dashboard/StatusBadge";
+import PaymentHistory from "@/components/dashboard/PaymentHistory";
 
 export default function CustomerOverviewPage() {
   const { data: session } = useSession();
@@ -81,6 +82,8 @@ export default function CustomerOverviewPage() {
           </ul>
         )}
       </div>
+
+      <PaymentHistory />
     </div>
   );
 }

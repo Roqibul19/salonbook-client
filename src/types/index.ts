@@ -30,6 +30,19 @@ export interface Appointment {
   customer?: { _id: string; name: string; email: string; image?: string | null; phone?: string | null };
 }
 
+export interface Transaction {
+  _id: string;
+  appointmentId: string;
+  customerId: string;
+  amount: number;
+  currency: string;
+  stripeSessionId: string;
+  status: "paid" | "failed";
+  createdAt: string;
+  customer?: { _id: string; name: string; email: string; image?: string | null };
+  appointment?: { _id: string; appointmentDate: string; timeSlot: string; serviceName?: string };
+}
+
 export interface CategoryCount {
   name: string;
   count: number;
