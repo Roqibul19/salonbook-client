@@ -12,6 +12,24 @@ export interface Service {
   createdAt: string;
 }
 
+export type AppointmentStatus = "pending" | "confirmed" | "cancelled";
+export type PaymentStatus = "unpaid" | "paid";
+
+export interface Appointment {
+  _id: string;
+  serviceId: string;
+  customerId: string;
+  appointmentDate: string;
+  timeSlot: string;
+  message: string;
+  servicePrice: number;
+  paymentStatus: PaymentStatus;
+  status: AppointmentStatus;
+  createdAt: string;
+  service?: Pick<Service, "_id" | "serviceName" | "image" | "category" | "duration">;
+  customer?: { _id: string; name: string; email: string; image?: string | null; phone?: string | null };
+}
+
 export interface CategoryCount {
   name: string;
   count: number;
