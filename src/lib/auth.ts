@@ -1,6 +1,6 @@
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
-import { APIError, createAuthMiddleware } from "better-auth/api";
+import { APIError, createAuthMiddleware, getSessionFromCtx } from "better-auth/api";
 import { jwt } from "better-auth/plugins";
 import { nextCookies } from "better-auth/next-js";
 import { ObjectId } from "mongodb";
@@ -57,6 +57,14 @@ export const auth = betterAuth({
             message:
               "Password must contain at least one uppercase and one lowercase letter",
           });
+        }
+      }
+
+      // blocked users cannot update their profile
+      if (ctx.path === "/update-user") {
+        const session = await getSessionFromCtx(ctx);
+        if (session?.user && (session.user as { isBlocked?: boolean }).isBlocked) {
+          throw new APIError("FORBIDDEN", { message: "Your account has been blocked" });
         }
       }
     }),
