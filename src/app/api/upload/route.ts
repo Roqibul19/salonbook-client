@@ -43,7 +43,11 @@ export async function POST(request: Request) {
     const data = await res.json();
 
     if (!res.ok || !data?.success) {
-      return NextResponse.json({ message: "Image upload failed" }, { status: 502 });
+      const reason = data?.error?.message;
+      return NextResponse.json(
+        { message: reason ? `Image upload failed: ${reason}` : "Image upload failed" },
+        { status: 502 }
+      );
     }
 
     return NextResponse.json({ url: data.data.display_url as string });
