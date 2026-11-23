@@ -1,26 +1,59 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-playfair);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  /* SalonBook brand colors (rose / mauve) */
+  --color-brand-50: #fdf4f6;
+  --color-brand-100: #fbe8ee;
+  --color-brand-200: #f5cfdb;
+  --color-brand-300: #eca8bd;
+  --color-brand-400: #df7698;
+  --color-brand-500: #cc4f78;
+  --color-brand-600: #b03a62;
+  --color-brand-700: #922d50;
+  --color-brand-800: #7a2845;
+  --color-brand-900: #67253d;
+
+  /* warm neutrals */
+  --color-cream: #fdf8f5;
+  --color-ink: #2a1f24;
+  --color-muted: #6f6066;
+  --color-line: #eee3e6;
+
+  /* accent */
+  --color-gold: #c39a5c;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading), Georgia, serif;
+}
+
+/* reusable form styles */
+@layer components {
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-muted/60 focus:border-brand-400 focus:ring-4 focus:ring-brand-100;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .field-error {
+    @apply mt-1 text-xs text-red-600;
+  }
 }
