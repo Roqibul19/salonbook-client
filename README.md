@@ -8,7 +8,7 @@ This is the **Next.js** front end. It also runs **Better Auth** (email/password 
 
 | | |
 |---|---|
-| Live Website | _Coming soon_ |
+| Live Website | https://salonbook-client-teal.vercel.app |
 | Client Repository | https://github.com/Roqibul19/salonbook-client |
 | Server Repository | https://github.com/Roqibul19/salonbook-server |
 
