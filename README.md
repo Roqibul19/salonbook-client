@@ -123,3 +123,7 @@ Sign in again and you will be taken to the Admin Dashboard.
 ### Test payment
 
 Use Stripe test card `4242 4242 4242 4242` with any future expiry date and any CVC.
+
+## 👨‍💻 Developer
+
+Developed by **Md Roqibul Haque** — [GitHub](https://github.com/Roqibul19)

@@ -111,9 +111,20 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <p className="mx-auto max-w-7xl px-4 py-5 text-center text-xs text-white/60 sm:px-6 lg:px-8">
-          © {new Date().getFullYear()} SalonBook. All rights reserved.
-        </p>
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-center text-xs text-white/60 sm:flex-row sm:px-6 lg:px-8">
+          <p>© {new Date().getFullYear()} SalonBook. All rights reserved.</p>
+          <p>
+            Developed by{" "}
+            <a
+              href="https://github.com/Roqibul19"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-white/80 transition hover:text-brand-300"
+            >
+              Md Roqibul Haque
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
