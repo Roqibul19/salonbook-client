@@ -50,9 +50,18 @@ export default function MyAppointmentsPage() {
 
   const handlePay = async (appointment: Appointment) => {
     setPayingId(appointment._id);
-    // Stripe Checkout is connected in the payment step
-    toast.info("Online payment is coming soon.");
-    setPayingId(null);
+    try {
+      const { url } = await api<{ url: string }>("/payments/create-checkout-session", {
+        method: "POST",
+        auth: true,
+        body: { appointmentId: appointment._id },
+      });
+      toast.loading("Redirecting to secure Stripe checkout...");
+      window.location.assign(url); // go to Stripe Checkout
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Could not start payment");
+      setPayingId(null);
+    }
   };
 
   const actions = (a: Appointment) => (
